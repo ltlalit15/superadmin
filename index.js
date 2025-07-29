@@ -10,7 +10,7 @@ const app = express();
 // ✅ Correct CORS setup
 app.use(
   cors({
-    origin: "*", // ⚠️ Change to your frontend URL
+    origin: ["https://sellersaas.netlify.app","http://localhost:5173"], // ⚠️ Change to your frontend URL
     credentials: true,
   })
 );
