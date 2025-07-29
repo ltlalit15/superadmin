@@ -8,12 +8,11 @@ dotenv.config();
 const app = express();
 
 // ✅ Correct CORS setup
-app.use(
-  cors({
-    origin: "*", // ⚠️ Change to your frontend URL
-    credentials: true,
-  })
-);
+app.use(cors({
+    origin: ['http://localhost:5173', 'https://sellersaas.netlify.app'],  // ✅ Only allow localhost:5173
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],  // ✅ Allow selected HTTP methods
+   // allowedHeaders: ['Content-Type', 'Authorization']  // ✅ Allow these headers
+}));
 
 // Body parser
 app.use(express.json());
