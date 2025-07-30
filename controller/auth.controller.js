@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
 
         const token = jwt.sign(
             { id: user._id, role: user.role },
-            my_super_secret_token_123,
+            'my_super_secret_token_123',
             { expiresIn: "7d" }
         );
 
