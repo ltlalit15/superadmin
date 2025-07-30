@@ -7,11 +7,13 @@ const connectDB = require("./Config/db_config");
 dotenv.config();
 const app = express();
 
-// ✅ Correct CORS setup
+// ✅ CORS setup (merged and clean)
 app.use(
   cors({
-    origin: ["https://sellersaas.netlify.app","http://localhost:5173"], // ⚠️ Change to your frontend URL
+    origin: ["https://sellersaas.netlify.app", "http://localhost:5173"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    // allowedHeaders: ["Content-Type", "Authorization"] // uncomment if needed
   })
 );
 
@@ -36,6 +38,7 @@ app.use("/", require("./routes/adminRoutes"));
 app.use("/", require("./routes/planBooking.routes"));
 app.use("/", require("./routes/dashboard.routes"));
 // app.use("/", require("./routes/orderRoutes"));
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
